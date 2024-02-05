@@ -1,9 +1,15 @@
 package br.com.northon.restspringbootandjavastudy.controller.request;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class MeteorologyRequest {
-	
+public class MeteorologyRequest implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8660085718059244901L;
+
 	private ClimateConditionRequest climateCondition;
 	
 	private Date date;
