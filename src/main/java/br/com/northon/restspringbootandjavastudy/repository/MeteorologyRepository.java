@@ -1,11 +1,9 @@
 package br.com.northon.restspringbootandjavastudy.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public class MeteorologyRepository {
+import br.com.northon.restspringbootandjavastudy.repository.entity.MeteorologyEntity;
 
-	public void meteorologyRegister() {
-		
-	}
-}
+@Repository
+public interface MeteorologyRepository extends JpaRepository<MeteorologyEntity, Long> {}
