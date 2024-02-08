@@ -2,6 +2,7 @@ package br.com.northon.restspringbootandjavastudy.exception.handler;
 
 import java.util.Date;
 
+import org.apache.coyote.BadRequestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -22,10 +23,18 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 			WebRequest request) {
 		ExceptionResponse exceptionResponse = new ExceptionResponse(
 				new Date(), ex.getMessage(), request.getDescription(false));
-		return new ResponseEntity<>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+		return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
 	}
 	
 	@ExceptionHandler(UnsupportedClimateInfoException.class)
+	public final ResponseEntity<ExceptionResponse> handleUnsupportedClimateInfoExceptions(Exception ex,
+			WebRequest request) {
+		ExceptionResponse exceptionResponse = new ExceptionResponse(
+				new Date(), ex.getMessage(), request.getDescription(false));
+		return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(BadRequestException.class)
 	public final ResponseEntity<ExceptionResponse> handleBadRequestExceptions(Exception ex,
 			WebRequest request) {
 		ExceptionResponse exceptionResponse = new ExceptionResponse(

@@ -3,19 +3,27 @@ package br.com.northon.restspringbootandjavastudy.controller.request;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+
 public class MeteorologyRequest implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 8660085718059244901L;
 
+	@Valid
+	@NotNull(message = "Climate condition field is required")
 	private ClimateConditionRequest climateCondition;
 	
+	@NotNull(message = "Date field is required")
+	@Past(message = "The date of climate condition must be in the past.")
 	private Date date;
 	
+	@NotBlank(message = "City field is required")
 	private String city;
 	
+	@NotBlank(message = "State field is required")
 	private String state;
 
 	public ClimateConditionRequest getClimateCondition() {

@@ -95,7 +95,11 @@ public class MeteorologyEntity implements Serializable {
 		this.city = city;
 		this.state = state;
 	}
-	
+
+	public MeteorologyEntity() {
+		super();
+	}
+
 	
 
 }
